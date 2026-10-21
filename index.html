@@ -115,7 +115,7 @@ h1,h2,h3{font-weight:800;margin:0}
 .hero > .wrap{z-index:1;display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(22px,3.4vh,38px);justify-items:center;text-align:center}
 .presents{color:var(--gold);margin:0}
 #tbox{width:100%;min-width:0;text-align:center}
-#t{display:inline-block;white-space:nowrap;font-size:clamp(22px,7vw,120px);line-height:1.1;letter-spacing:.02em;margin:0;filter:drop-shadow(0 0 46px rgba(236,215,162,.2));
+#t{display:inline-block;white-space:nowrap;font-size:clamp(22px,7vw,120px);line-height:1.04;letter-spacing:.02em;margin:0;filter:drop-shadow(0 0 46px rgba(236,215,162,.2));
   color:transparent;background:linear-gradient(100deg,var(--ink) 0%,var(--ink) 42%,#ffffff 50%,var(--ink) 58%,var(--ink) 100%);background-size:260% 100%;background-position:100% 0;
   -webkit-background-clip:text;background-clip:text;animation:glint 9s 2.6s ease-in-out infinite}
 @keyframes glint{0%{background-position:100% 0}38%,100%{background-position:0 0}}
@@ -125,6 +125,8 @@ h1,h2,h3{font-weight:800;margin:0}
 .promise em{font-style:normal;color:var(--gold-hi)}
 .role{font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:clamp(12px,1.2vw,15px);line-height:1.9;margin:0;color:var(--soft)}
 .role span{color:var(--gold)}
+.role b{color:var(--gold-hi);font-weight:600}
+#t span{display:block}
 .cta{display:inline-block;background:linear-gradient(180deg,#f0dca8,#cba75f 55%,#b8934d);color:var(--on-gold);padding:19px 34px;text-decoration:none;transition:background .3s,box-shadow .3s;box-shadow:0 0 0 rgba(208,176,111,0)}
 .cta:hover{background:linear-gradient(180deg,#fff0c6,#e2c27a 55%,#c9a45c);box-shadow:0 0 36px rgba(208,176,111,.45)}
 
@@ -238,6 +240,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
 .s-live{background:var(--gold)}
 .s-reh{border:2px solid var(--gold)}
 .s-wri{background:var(--gold-dim)}
+.s-no{visibility:hidden}
 .legend .dot{margin-right:10px}
 .lab{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,64px)}
 @media(min-width:900px){.lab{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}}
@@ -296,7 +299,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
 <div id="grain" aria-hidden="true"></div>
 
 <header class="hud-t">
-  <a class="brand" href="#top">Hamza El Jaouahiry</a>
+  <a class="brand" href="#top">Impresario</a>
   <div class="hud-r label">
     <a class="go" href="#contact">Contact</a>
     <button type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -312,13 +315,12 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
     <li><a href="#methode"><span class="n label">05</span><span class="t">Le cycle</span></a></li>
     <li><a href="#principes"><span class="n label">06</span><span class="t">Les principes</span></a></li>
     <li><a href="#laboratoire"><span class="n label">07</span><span class="t">Le laboratoire</span></a></li>
-    <li><a href="#parcours"><span class="n label">08</span><span class="t">Le parcours</span></a></li>
-    <li><a href="#contact"><span class="n label">09</span><span class="t">Contact</span></a></li>
+    <li><a href="#contact"><span class="n label">08</span><span class="t">Contact</span></a></li>
   </ol>
 </nav>
 
 <div class="hud-b label" aria-hidden="true">
-  <span id="scene-now"><b>01 / 09</b> · Ouverture</span>
+  <span id="scene-now"><b>01 / 08</b> · Ouverture</span>
 </div>
 <div class="progress" aria-hidden="true"><i id="bar"></i></div>
 
@@ -327,10 +329,10 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
     <div class="stage" aria-hidden="true"><div class="beam"></div><div class="leaf l"></div><div class="leaf r"></div><div class="slit"></div></div>
     <div class="wrap">
       <p class="label presents">Paris · Talents · Projets · Trajectoires</p>
-      <div id="tbox"><h1 class="display" id="t">Impresario</h1></div>
+      <div id="tbox"><h1 class="display" id="t"><span>Hamza</span><span>El Jaouahiry</span></h1></div>
       <span class="horizon" aria-hidden="true"></span>
       <p class="promise">Je change la trajectoire de ceux <em>en qui je crois</em>.</p>
-      <p class="role label">Directeur artistique <span>&amp;</span> architecte de talents</p>
+      <p class="role label"><b>Impresario</b> · Directeur artistique <span>&amp;</span> architecte de talents</p>
       <a class="cta label" href="#contact">Présentez-moi votre projet</a>
     </div>
   </section>
@@ -462,7 +464,6 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
         <li><h3>Chacun reste maître de lui-même</h3><p>Je respecte l'identité, l'autonomie et les intérêts des personnes accompagnées.</p></li>
         <li><h3>Tout est écrit</h3><p>Responsabilités, rémunérations et droits sont formalisés dès le départ.</p></li>
         <li><h3>La confiance se mérite</h3><p>Je construis ma réputation sur la compétence, la fiabilité et la discrétion.</p></li>
-        <li><h3>Chacun son projet</h3><p>Mon univers personnel et les projets des personnes accompagnées restent séparés, avec des intérêts distincts.</p></li>
         <li><h3>Un rythme tenable</h3><p>Je développe l'activité progressivement, sans sacrifier la création ni la stabilité.</p></li>
       </ul>
     </div>
@@ -472,10 +473,10 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
     <div class="wrap">
       <span class="bgnum" aria-hidden="true">07</span>
       <div class="sh rv">
-        <span class="label"><span>07</span> Mon propre travail</span>
+        <span class="label"><span>07</span> Mes projets et mon parcours</span>
         <h2 class="display">Le laboratoire</h2>
       </div>
-      <p class="intro rv">Ces projets sont les miens. Ils me servent de terrain d'expérimentation en direction artistique, en production et en collaboration, et montrent la manière dont je construis une identité de bout en bout.</p>
+      <p class="intro rv">Mes projets, mes publications et le chemin qui m'y a mené. Ils me servent de terrain d'expérimentation en direction artistique, en production et en collaboration, et montrent la manière dont je construis une identité de bout en bout.</p>
       <div class="legend label rv" aria-hidden="true">
         <span><i class="dot s-live"></i>Réalisé</span>
         <span><i class="dot s-reh"></i>En préparation</span>
@@ -485,11 +486,14 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
         <ul class="lab-list" role="tablist" aria-label="Projets">
           <li><button type="button" class="lab-b" role="tab" aria-selected="true" data-p="p1"><span class="t">Sinbury Universe</span><i class="dot s-live"></i></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p2"><span class="t">MORI</span><i class="dot s-live"></i></button></li>
+          <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p8"><span class="t">Strawberry Production</span><i class="dot s-live"></i></button></li>
+          <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p9"><span class="t">Réalisation et composition</span><i class="dot s-live"></i></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p3"><span class="t">30 Architectures</span><i class="dot s-live"></i></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p4"><span class="t">Le Narratif de Marque à l'Ère de l'IA</span><i class="dot s-live"></i></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p5"><span class="t">Just Sin It.</span><i class="dot s-reh"></i></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p6"><span class="t">OPSIS</span><i class="dot s-reh"></i></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p7"><span class="t">Jusqu'à la chute</span><i class="dot s-wri"></i></button></li>
+          <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p10"><span class="t">Formation</span><i class="dot s-no"></i></button></li>
         </ul>
         <div>
           <article class="panel" id="p1" role="tabpanel">
@@ -554,25 +558,35 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
               <div><dt class="label">Rôle</dt><dd>Auteur</dd></div>
             </dl>
           </article>
+          <article class="panel" id="p8" role="tabpanel" hidden>
+            <span class="kind label">Studio de narration de marque · Fondateur</span>
+            <h3>Strawberry Production</h3>
+            <p>Le studio que j'ai fondé pour raconter les moments décisifs des fondateurs, des marques et des lieux : lancements, ouvertures, sorties. Je m'y occupe du récit, de sa structure et de sa mise en scène.</p>
+            <dl class="facts">
+              <div><dt class="label">Rôle</dt><dd>Fondateur, direction narrative</dd></div>
+              <div><dt class="label">Site</dt><dd>gostrawberryprod.com</dd></div>
+            </dl>
+          </article>
+          <article class="panel" id="p9" role="tabpanel" hidden>
+            <span class="kind label">Cinéma et musique · Depuis 2019</span>
+            <h3>Réalisation et composition</h3>
+            <p>Je réalise des films et je compose depuis 2019. J'ai aussi travaillé comme ingénieur du son chez Dans Le Labo en 2023 et 2024, ce qui m'a appris à mener un projet sonore jusqu'au bout.</p>
+            <dl class="facts">
+              <div><dt class="label">Rôle</dt><dd>Réalisateur, compositeur</dd></div>
+              <div><dt class="label">2023 — 24</dt><dd>Ingénieur du son, Dans Le Labo</dd></div>
+              <div><dt class="label">Projet</dt><dd>MORI</dd></div>
+            </dl>
+          </article>
+          <article class="panel" id="p10" role="tabpanel" hidden>
+            <span class="kind label">Formation</span>
+            <h3>Cinéma et audiovisuel</h3>
+            <p>Deux licences en cinéma et audiovisuel, à l'Université Gustave Eiffel et à la Sorbonne Nouvelle. C'est là que j'ai appris à lire une image, un récit et un montage.</p>
+            <dl class="facts">
+              <div><dt class="label">Études</dt><dd>Licences Cinéma &amp; Audiovisuel</dd></div>
+              <div><dt class="label">Écoles</dt><dd>Université Gustave Eiffel · Sorbonne Nouvelle</dd></div>
+            </dl>
+          </article>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="scene" id="parcours" data-label="Le parcours">
-    <div class="wrap">
-      <span class="bgnum" aria-hidden="true">08</span>
-      <div class="sh rv">
-        <span class="label"><span>08</span> Le chemin parcouru</span>
-        <h2 class="display">Le parcours</h2>
-      </div>
-      <div class="cv rv">
-        <div class="cv-row"><span class="y label">2026</span><h4>Auteur</h4><p>30 Architectures et Le Narratif de Marque à l'Ère de l'IA.</p></div>
-        <div class="cv-row"><span class="y label">2024 —</span><h4>Sinbury Universe</h4><p>Création de l'univers, direction artistique, écriture de la bible.</p></div>
-        <div class="cv-row"><span class="y label">2023 — 24</span><h4>Ingénieur du son</h4><p>Dans Le Labo.</p></div>
-        <div class="cv-row"><span class="y label">Fondateur</span><h4>Strawberry Production</h4><p>Studio de narration de marque, gostrawberryprod.com.</p></div>
-        <div class="cv-row"><span class="y label">2019 —</span><h4>Réalisateur et compositeur</h4><p>Films, musique, projet MORI.</p></div>
-        <div class="cv-row"><span class="y label">Formation</span><h4>Cinéma &amp; Audiovisuel</h4><p>Licences à l'Université Gustave Eiffel et à la Sorbonne Nouvelle.</p></div>
       </div>
       <div class="disc label rv" aria-label="Disciplines">
         <span>Production musicale</span><span>Composition</span><span>Ingénierie du son</span><span>Réalisation</span><span>Écriture</span><span>Direction artistique</span><span>Narration de marque</span><span>Worldbuilding</span>
@@ -583,7 +597,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
   <section class="scene contact" id="contact" data-label="Contact">
     <div class="wrap">
       <div class="sh rv">
-        <span class="label"><span>09</span> Parlons de votre projet</span>
+        <span class="label"><span>08</span> Parlons de votre projet</span>
       </div>
       <p class="finale rv">Les grandes choses commencent par quelqu'un <em>en qui l'on croit</em>.</p>
       <div class="doors rv">
@@ -604,7 +618,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
       </div>
       <div class="foot label">
         <span>Hamza El Jaouahiry</span>
-        <span>Paris · Noisy-le-Grand</span>
+        <span>Paris</span>
         <span>© 2026</span>
       </div>
     </div>
@@ -622,7 +636,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
   function fit(){
     t.style.fontSize='100px';
     var w=t.getBoundingClientRect().width,a=tb.clientWidth;
-    if(w>0&&a>0)t.style.fontSize=(Math.floor(100*a/w*10)/10)+'px';
+    if(w>0&&a>0)t.style.fontSize=(Math.floor(Math.min(100*a/w,window.innerHeight*.17)*10)/10)+'px';
   }
   fit();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
