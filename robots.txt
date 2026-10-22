@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://impresario-steel.vercel.app/sitemap.xml
