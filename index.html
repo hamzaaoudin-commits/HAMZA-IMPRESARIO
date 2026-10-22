@@ -245,9 +245,17 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
 .s-no{visibility:hidden}
 .legend .dot{margin-right:10px}
 .lab{display:block}
-.lab-list{list-style:none;margin:0 0 clamp(32px,4vw,56px);padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.4vw,32px) clamp(14px,2vw,26px)}
-@media(min-width:620px){.lab-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(min-width:1000px){.lab-list{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.lab-list{list-style:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-right,0px))) 0 0;padding:26px max(16px,env(safe-area-inset-right,0px)) 14px 0;display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.lab-list::-webkit-scrollbar{display:none}
+.lab-list.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.lab-list li{flex:0 0 clamp(160px,17vw,230px)}
+@media(min-width:900px){.lab-list{margin-right:calc(-1 * max(56px,env(safe-area-inset-right,0px)));padding-right:max(56px,env(safe-area-inset-right,0px))}}
+.shelf-nav{display:flex;align-items:center;gap:12px;margin:0 0 clamp(28px,4vw,48px)}
+.shelf-nav .hint{color:var(--mute);margin-right:auto}
+.arr{all:unset;box-sizing:border-box;width:48px;height:48px;border:1px solid rgba(241,236,223,.34);display:grid;place-items:center;cursor:pointer;transition:border-color .25s,background .25s,color .25s}
+.arr:hover{border-color:var(--gold-hi);color:var(--gold-hi)}
+.arr:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.arr svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
 .lab-b{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:block;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .3s;opacity:.8}
 .lab-b:focus-visible{outline:2px solid var(--gold-hi);outline-offset:6px}
 .lab-b:hover{opacity:1;transform:translateY(-4px)}
@@ -476,6 +484,11 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p7"><span class="cv"><svg viewBox="0 0 200 300" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2326"/><stop offset="1" stop-color="#050404"/></linearGradient></defs><rect width="200" height="300" fill="url(#gc)"/><rect x="20" y="40" width="150" height="9" fill="#f1ecdf" opacity="1.0"/><rect x="26" y="60" width="136" height="9" fill="#f1ecdf" opacity="0.91"/><rect x="32" y="80" width="122" height="9" fill="#f1ecdf" opacity="0.8200000000000001"/><rect x="38" y="100" width="108" height="9" fill="#f1ecdf" opacity="0.73"/><rect x="44" y="120" width="94" height="9" fill="#f1ecdf" opacity="0.64"/><rect x="50" y="140" width="80" height="9" fill="#f1ecdf" opacity="0.55"/><rect x="56" y="160" width="66" height="9" fill="#f1ecdf" opacity="0.45999999999999996"/><rect x="62" y="180" width="52" height="9" fill="#f1ecdf" opacity="0.37"/><text class="ti" x="20" y="204" font-size="25" fill="#f1ecdf" >JUSQU’À</text><text class="ti" x="20" y="230" font-size="25" fill="#f1ecdf" >LA</text><text class="ti" x="20" y="264" font-size="33" fill="#f1ecdf" >CHUTE</text><text class="sm" x="20" y="282" font-size="5.2" fill="#d0b06f" >LIVRE DOCUMENTAIRE · EN ÉCRITURE</text></svg></span><span class="cap2"><span class="t">Jusqu'à la chute</span><i class="dot s-wri"></i></span></button></li>
           <li><button type="button" class="lab-b" role="tab" aria-selected="false" data-p="p10"><span class="cv"><svg viewBox="0 0 200 300" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice"><rect width="200" height="300" fill="#0f0c0a"/><path d="M26 40 H14 V52 M174 40 H186 V52 M26 196 H14 V184 M174 196 H186 V184" fill="none" stroke="#d0b06f" stroke-width="1.4"/><rect x="26" y="52" width="148" height="132" fill="#d0b06f" fill-opacity=".07"/><path d="M26 118 H174 M100 52 V184" stroke="#d0b06f" stroke-opacity=".25" stroke-width=".7"/><circle cx="100" cy="118" r="5" fill="none" stroke="#ecd7a2" stroke-width="1"/><text class="ti" x="20" y="236" font-size="16" fill="#f1ecdf" >CINÉMA &amp;</text><text class="ti" x="20" y="256" font-size="16" fill="#f1ecdf" >AUDIOVISUEL</text><text class="sm" x="20" y="24" font-size="6" fill="#d0b06f" >FORMATION</text><text class="sm" x="20" y="276" font-size="5" fill="#8a7648" >GUSTAVE EIFFEL · SORBONNE NOUVELLE</text></svg></span><span class="cap2"><span class="t">Formation</span><i class="dot s-no"></i></span></button></li>
         </ul>
+        <div class="shelf-nav">
+          <span class="hint label" aria-hidden="true">Faites glisser · 10 œuvres</span>
+          <button type="button" class="arr" id="lab-prev" aria-label="Œuvres précédentes"><svg viewBox="0 0 24 24"><path d="M15 4 7 12l8 8"/></svg></button>
+          <button type="button" class="arr" id="lab-next" aria-label="Œuvres suivantes"><svg viewBox="0 0 24 24"><path d="m9 4 8 8-8 8"/></svg></button>
+        </div>
         <div>
           <article class="panel" id="p1" role="tabpanel">
             <span class="kind label">Univers transmédia · Depuis 2024</span>
@@ -783,6 +796,17 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
       var cur=document.getElementById(b.getAttribute('data-p'));if(cur&&cur.getBoundingClientRect().bottom>window.innerHeight-60){cur.scrollIntoView({behavior:reduce?'auto':'smooth',block:'end'})}
     });
   });
+
+  // Catalogue : défilement horizontal, flèches et glisser
+  var shelf=$('.lab-list');
+  function stepW(){var li=shelf.querySelector('li');return li?li.getBoundingClientRect().width*2:300}
+  $('#lab-prev').addEventListener('click',function(){shelf.scrollBy({left:-stepW(),behavior:reduce?'auto':'smooth'})});
+  $('#lab-next').addEventListener('click',function(){shelf.scrollBy({left:stepW(),behavior:reduce?'auto':'smooth'})});
+  var dn=false,sx=0,sl=0,moved=0;
+  shelf.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;dn=true;moved=0;sx=e.clientX;sl=shelf.scrollLeft});
+  window.addEventListener('pointermove',function(e){if(!dn)return;var dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));if(moved>4)shelf.classList.add('drag');shelf.scrollLeft=sl-dx});
+  window.addEventListener('pointerup',function(){if(!dn)return;dn=false;setTimeout(function(){shelf.classList.remove('drag')},0)});
+  shelf.addEventListener('click',function(e){if(moved>4){e.stopPropagation();e.preventDefault();moved=0}},true);
 
   // Copier l'adresse
   var btn=$('#copy'),mail=$('#email');
