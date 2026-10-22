@@ -110,7 +110,9 @@ h1,h2,h3{font-weight:800;margin:0}
 .hero .wrap>#tbox{animation-delay:1.9s}
 .hero .wrap>.promise{animation-delay:2.8s}
 .hero .wrap>.role{animation-delay:3.1s}
-.hero .wrap>.cta{animation-delay:3.4s}
+.hero .wrap>.bio{animation-delay:3.3s}
+.hero .wrap>.cta{animation-delay:3.6s}
+.bio{margin:0;max-width:44ch;color:var(--soft);font-weight:500;font-size:clamp(15px,1.35vw,18px);line-height:1.55;text-wrap:balance}
 @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 .hero > .wrap{z-index:1;display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(22px,3.4vh,38px);justify-items:center;text-align:center}
 .presents{color:var(--gold);margin:0}
@@ -332,6 +334,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
       <span class="horizon" aria-hidden="true"></span>
       <p class="promise">Votre talent mérite <em>d'être vu</em>.</p>
       <p class="role label"><b>Impresario</b> · Directeur artistique <span>&amp;</span> architecte de talents</p>
+      <p class="bio">Réalisateur et compositeur depuis 2019. Fondateur de Strawberry Production et créateur de Sinbury Universe. Auteur de deux publications en 2026.</p>
       <a class="cta label" href="#contact">Présentez-moi votre projet</a>
     </div>
   </section>
@@ -606,7 +609,7 @@ section.creation{background:radial-gradient(110% 80% at 50% 0%,#11402f 0%,#08201
   function fit(){
     t.style.fontSize='100px';
     var w=t.getBoundingClientRect().width,a=tb.clientWidth;
-    if(w>0&&a>0)t.style.fontSize=(Math.floor(Math.min(100*a/w,window.innerHeight*.17)*10)/10)+'px';
+    if(w>0&&a>0)t.style.fontSize=(Math.floor(Math.min(100*a/w,window.innerHeight*.14)*10)/10)+'px';
   }
   fit();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
