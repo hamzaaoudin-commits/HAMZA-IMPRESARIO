@@ -823,6 +823,7 @@ main{position:relative;z-index:2}
     x.lineJoin='round';
     if(o.box){x.fillStyle='#04060a';x.fillRect(0,0,cw,ch);x.strokeStyle=o.glow;x.lineWidth=10;x.strokeRect(14,14,cw-28,ch-28)}
     function paint(tx,px,py){
+      if(o.crisp){x.shadowBlur=0;x.strokeStyle=o.glow;x.lineWidth=o.crisp;x.lineJoin='round';x.strokeText(tx,px,py);return}
       x.shadowColor=o.glow;x.shadowBlur=(o.vert?cw:ch)*.12;x.strokeStyle=o.glow;x.lineWidth=(o.vert?cw:ch)*.05;x.strokeText(tx,px,py);
       x.shadowBlur=0;x.fillStyle=o.core;x.fillText(tx,px,py);
     }
@@ -848,7 +849,7 @@ main{position:relative;z-index:2}
     // cinéma : catalogue
     sign('CATALOGUE',Object.assign({box:true,w:1024,h:300,fs:170},WHT),12.6,14,-372,26,7.6,-Math.PI/2+.5,2.0);
     // la grande enseigne finale
-    fin=sign('SINBURY',Object.assign({w:2048,h:512,fs:420,an:1},RED,{glow:'#d80c1a',core:'#ff1a2a'}),0,58,-540,92,23,0,1.3);(function(){var d=fin.userData.tex,cv=document.createElement('canvas');cv.width=d.cw;cv.height=d.ch;var g=cv.getContext('2d');g.font=d.font;g.textAlign='center';g.textBaseline='middle';g.fillStyle='#C1121F';g.fillText('SINBURY',d.cw/2,d.py);cv.style.cssText='display:block;width:'+d.cw+'px;height:'+d.ch+'px';finEl.innerHTML='';finEl.appendChild(cv);finEl.style.cssText+=';left:0;top:0;width:'+d.cw+'px;height:'+d.ch+'px;transform-origin:0 0;transform:none';finEl.dataset.cw=d.cw;finEl.dataset.ch=d.ch})();
+    fin=sign('SINBURY',Object.assign({w:2048,h:512,fs:420,an:1,crisp:16},RED,{glow:'#ff1a2a',core:'#ff1a2a'}),0,58,-540,92,23,0,1.25);(function(){var d=fin.userData.tex,cv=document.createElement('canvas');cv.width=d.cw;cv.height=d.ch;var g=cv.getContext('2d');g.font=d.font;g.textAlign='center';g.textBaseline='middle';g.fillStyle='#C1121F';g.fillText('SINBURY',d.cw/2,d.py);cv.style.cssText='display:block;width:'+d.cw+'px;height:'+d.ch+'px';finEl.innerHTML='';finEl.appendChild(cv);finEl.style.cssText+=';left:0;top:0;width:'+d.cw+'px;height:'+d.ch+'px;transform-origin:0 0;transform:none';finEl.dataset.cw=d.cw;finEl.dataset.ch=d.ch})();
     // enseignes de quartier
     var words=['HÔTEL','CAFÉ','BAR','CINÉMA','TABAC','24/24','DISQUES','PHARMACIE','LIBRAIRIE','THÉÂTRE','JAZZ','VIDÉO'];
     var pals=[RED,BLU,RED,YEL,WHT,RED];
