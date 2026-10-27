@@ -310,6 +310,7 @@ html,body{background:#000!important}
 .scene.end .finale{font-size:clamp(24px,4.4vw,64px)!important;max-width:20ch;margin-bottom:clamp(60px,9vw,120px)!important}
 .bigsign .display{font-size:clamp(70px,22vw,360px)!important}
 .bigsign .display{text-shadow:none!important}
+.billboard::before,.billboard::after{display:none}
 
 </style>
 
@@ -319,12 +320,11 @@ html,body{background:#000!important}
 <header class="hud-t">
   <a class="brand" href="#top">Sinbury</a>
   <div class="hud-r label">
-    <span class="clock"><span id="clk">22:40</span></span>
-    <button type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Plan</button>
+    <button type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
   </div>
 </header>
 
-<nav id="menu" aria-label="Plan de la ville" hidden>
+<nav id="menu" aria-label="Menu" hidden>
   <ol>
     <li><a href="#top"><span class="n label">00</span><span class="t">Sinbury</span></a></li>
     <li><a href="#vision"><span class="n label">01</span><span class="t">Notre vision</span></a></li>
@@ -359,7 +359,7 @@ html,body{background:#000!important}
   <section class="scene left" id="vision" data-label="Notre vision">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>01</b><span>Avenue de la Vision</span></span>
+        <span class="plate"><b>01</b></span>
         <h2 class="display">Notre vision</h2>
 <div class="split"><div><p class="statement">Sinbury est une maison artistique consacrée aux œuvres qui explorent les <em>zones les plus sombres</em> de l’existence humaine.</p><div class="prose"><p>La tragédie, l’ambition, le pouvoir, la solitude, le désir, l’obsession et la chute constituent le cœur de son territoire artistique.</p><p>À travers la musique, le cinéma et la littérature, Sinbury défend des œuvres singulières qui interrogent l’être humain, ses contradictions et les conséquences de ses choix.</p></div><p class="closing">Nous ne recherchons pas l’obscurité pour elle-même, mais <em>ce qu’elle révèle</em>.</p></div><figure class="billboard" aria-label="Logo Sinbury"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8934d"/><stop offset="1" stop-color="#f0dca8"/></linearGradient></defs><rect width="64" height="64" rx="12" fill="#0a0707"/><rect x="3.5" y="3.5" width="57" height="57" rx="9" fill="none" stroke="#8a7648" stroke-width="1.5"/><path fill="url(#g)" transform="translate(13.27 46.49) scale(0.04213 -0.04213)" d="M468 -12Q379 -12 302.0 -1.5Q225 9 167.0 34.5Q109 60 76.0 105.5Q43 151 43 220Q43 222 43.0 225.5Q43 229 44 233H285Q284 229 284.0 225.5Q284 222 284 219Q284 189 304.0 173.0Q324 157 360.0 151.5Q396 146 443 146Q462 146 482.5 146.5Q503 147 522.5 149.5Q542 152 557.5 157.0Q573 162 582.5 170.5Q592 179 592 192Q592 210 569.5 220.0Q547 230 508.5 235.5Q470 241 422.5 246.0Q375 251 324.0 259.0Q273 267 225.5 281.5Q178 296 139.5 321.0Q101 346 78.5 385.0Q56 424 56 480Q56 540 87.5 582.0Q119 624 173.0 650.0Q227 676 297.0 688.0Q367 700 443 700Q521 700 589.5 688.5Q658 677 710.5 652.0Q763 627 793.0 586.5Q823 546 823 488V476H584V480Q584 500 571.0 515.5Q558 531 529.0 540.5Q500 550 453 550Q405 550 373.0 544.0Q341 538 325.5 527.5Q310 517 310 505Q310 487 332.5 477.0Q355 467 393.5 461.5Q432 456 479.5 451.0Q527 446 578.0 438.5Q629 431 676.5 417.5Q724 404 762.5 380.0Q801 356 823.5 319.0Q846 282 846 228Q846 143 796.5 90.0Q747 37 661.5 12.5Q576 -12 468 -12Z"/></svg><b class="display">Sinbury</b></figure></div>
       </div>
@@ -369,7 +369,7 @@ html,body{background:#000!important}
   <section class="scene right" id="regard" data-label="Notre regard">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>02</b><span>Rue du Regard</span></span>
+        <span class="plate"><b>02</b></span>
         <h2 class="display">Notre regard</h2>
 <p class="statement">Nous croyons aux histoires qui laissent une trace, aux personnages qui se consument dans leurs propres désirs et aux œuvres qui osent regarder l’être humain <em>sans détourner les yeux</em>.</p><div class="prose"><p>Nous nous intéressons aux ambitions qui détruisent, aux amours qui condamnent, aux pouvoirs qui corrompent, aux solitudes qui transforment et aux décisions dont on ne revient pas.</p><p>La tragédie n’est pas nécessairement une fin malheureuse. Elle est aussi la confrontation entre ce que l’on désire, ce que l’on est et ce que l’on finit par devenir.</p></div><p class="closing">C’est dans cet espace que Sinbury entend <em>inscrire son regard</em>.</p>
       </div>
@@ -379,7 +379,7 @@ html,body{background:#000!important}
   <section class="scene full" id="disciplines" data-label="Nos disciplines">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>03</b><span>Boulevard des Disciplines</span></span>
+        <span class="plate"><b>03</b></span>
         <h2 class="display">Nos disciplines</h2>
 <div class="towers"><article class="tower"><div class="wins" aria-hidden="true"></div><h3>Musique</h3><p>Des artistes et des œuvres musicales portés par une identité forte, une direction artistique singulière et une véritable intention émotionnelle.</p></article><article class="tower"><div class="wins" aria-hidden="true"></div><h3>Cinéma</h3><p>Des récits et des visions de réalisateurs qui explorent les contradictions humaines, les rapports de pouvoir et les trajectoires individuelles.</p></article><article class="tower"><div class="wins" aria-hidden="true"></div><h3>Littérature</h3><p>Des nouvelles, des romans et des œuvres littéraires qui donnent forme aux obsessions, aux conflits intérieurs et aux tragédies de l’existence.</p></article></div><div class="prose"><p>Ces disciplines constituent différentes expressions d’une même sensibilité. Elles ne sont pas contraintes de partager une esthétique uniforme, mais doivent pouvoir dialoguer au sein d’une même vision artistique.</p></div>
       </div>
@@ -389,7 +389,7 @@ html,body{background:#000!important}
   <section class="scene full" id="magazine" data-label="Magazine et radio">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>04</b><span>Place du Kiosque</span></span>
+        <span class="plate"><b>04</b></span>
         <h2 class="display">Magazine et radio</h2>
 <div class="duo">
           <div>
@@ -418,7 +418,7 @@ html,body{background:#000!important}
   <section class="scene left" id="exigence" data-label="Notre exigence">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>05</b><span>Rue de l'Exigence</span></span>
+        <span class="plate"><b>05</b></span>
         <h2 class="display">Notre exigence</h2>
 <p class="statement">Sinbury ne cherche pas à <em>publier pour publier</em>.</p><div class="prose"><p>Chaque œuvre doit posséder une identité propre, une intention claire et une raison d’exister.</p><p>Nous privilégions la singularité à la conformité, la profondeur à l’effet immédiat et la cohérence artistique à la recherche de tendances.</p></div><p class="closing">Une œuvre n’a pas besoin d’être sombre dans sa forme pour appartenir à Sinbury. Elle doit porter un regard qui résonne avec <em>les questions que la maison choisit d’explorer</em>.</p>
       </div>
@@ -428,7 +428,7 @@ html,body{background:#000!important}
   <section class="scene right" id="artistes" data-label="Les artistes">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>06</b><span>Passage des Artistes</span></span>
+        <span class="plate"><b>06</b></span>
         <h2 class="display">Les artistes</h2>
 <p class="statement">Sinbury souhaite accompagner des artistes dont elle reconnaît le potentiel et dont elle <em>comprend la vision</em>.</p><div class="prose"><p>Notre ambition est de contribuer au développement de leurs projets, de leur identité et de leur trajectoire, sans leur imposer une manière de créer.</p><p>Dans un premier temps, la maison privilégie le conseil artistique, la réflexion stratégique et la mise en valeur des œuvres existantes.</p><p>À terme, elle ambitionne également de produire et de financer des projets sélectionnés pour leur singularité et leur exigence.</p></div><p class="closing">L’objectif n’est pas de fabriquer des artistes à l’image de Sinbury, mais de <em>réunir des voix différentes</em> autour d’une sensibilité commune.</p>
       </div>
@@ -438,7 +438,7 @@ html,body{background:#000!important}
   <section class="scene left" id="ambition" data-label="Notre ambition">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>07</b><span>Place de l'Ambition</span></span>
+        <span class="plate"><b>07</b></span>
         <h2 class="display">Notre ambition</h2>
 <p class="statement">Nous voulons construire une maison dont le nom représente progressivement <em>un repère</em> pour les artistes comme pour le public.</p><div class="prose"><p>Une maison dont on suit les sorties parce que l’on fait confiance à son regard. Une maison qui révèle des talents, défend des œuvres ambitieuses et développe un catalogue capable de traverser les disciplines et les générations.</p><p>Sinbury ne veut pas simplement accompagner la création. Elle veut participer à l’émergence d’œuvres qui comptent.</p></div><p class="closing">Notre ambition est de faire de Sinbury une signature artistique reconnue, dont chaque nouvelle œuvre constitue <em>une promesse d’exigence et de singularité</em>.</p>
       </div>
@@ -448,7 +448,7 @@ html,body{background:#000!important}
   <section class="scene full" id="laboratoire" data-label="Le catalogue">
     <div class="wrap">
       <div class="card rv">
-        <span class="plate"><b>08</b><span>Galerie du Catalogue</span></span>
+        <span class="plate"><b>08</b></span>
         <h2 class="display">Le catalogue</h2>
 <p class="intro">Les œuvres, les publications et le parcours de son fondateur.</p>
         <div class="cat" id="cat" data-order="p1,p2,p8,p9,p3,p4,p5,p6,p7,p10">
@@ -629,7 +629,7 @@ html,body{background:#000!important}
     var max=document.documentElement.scrollHeight-window.innerHeight;
     var p=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;window.SB_PROG=p;
     bar.style.transform='scaleX('+p+')';
-    var m=Math.round(22*60+40+p*7*60)%(24*60);clk.textContent=pad(Math.floor(m/60))+':'+pad(m%60);
+    var m=Math.round(22*60+40+p*7*60)%(24*60);if(clk)clk.textContent=pad(Math.floor(m/60))+':'+pad(m%60);
     var idx=0;
     for(var i=0;i<scenes.length;i++){if(scenes[i].getBoundingClientRect().top<=window.innerHeight*.45)idx=i}
     if(idx!==cur){
@@ -645,7 +645,7 @@ html,body{background:#000!important}
   // Menu
   var menu=$('#menu'),mb=$('#menu-btn');
   function setMenu(open){
-    menu.hidden=!open;mb.setAttribute('aria-expanded',String(open));mb.textContent=open?'Fermer':'Plan';
+    menu.hidden=!open;mb.setAttribute('aria-expanded',String(open));mb.textContent=open?'Fermer':'Menu';
     document.body.style.overflow=open?'hidden':'';
     if(open)links[Math.max(cur,0)].focus();
   }
