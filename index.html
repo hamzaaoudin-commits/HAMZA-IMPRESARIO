@@ -31,7 +31,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Sinbury","alternateName":"Sinbury Universe","description":"Maison artistique consacrée aux œuvres qui explorent les zones les plus sombres de l'existence humaine : musique, cinéma et littérature.","slogan":"Burn don't fade","url":"https://impresario-steel.vercel.app/","logo":"https://impresario-steel.vercel.app/icon-512.png","image":"https://impresario-steel.vercel.app/og-image.jpg","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"founder":{"@type":"Person","name":"Hamza El Jaouahiry","jobTitle":"Impresario, directeur artistique et architecte de talents"},"knowsAbout":["Musique","Cinéma","Littérature","Direction artistique"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,700;125,800;125,900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100,500;100,700;125,800;125,900&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
 /* A24 x ville de nuit : cartes noires bordées, typographie nue et lourde, mono pour les crédits, enseignes de rue, néon rouge, fenêtres allumées. Aucune couleur chaude orange. */
 :root{
@@ -259,6 +259,15 @@ main{position:relative;z-index:2}
 .panel{background:rgba(0,0,0,.88)}
 .hud-b{color:var(--mute)}
 .hero .wrap>.bio{background:rgba(0,0,0,.78)}
+
+/* logo Sinbury : Anton, majuscules, rouge */
+:root{--logo:#C1121F}
+#t,.brand,.billboard b,.bigsign .display{font-family:'Anton',Impact,'Arial Narrow',sans-serif!important;font-weight:400!important;font-stretch:normal!important;text-transform:uppercase;letter-spacing:.004em!important}
+#t{color:var(--logo);text-shadow:0 0 1px #ff2e3f,0 4px 30px rgba(0,0,0,.95);line-height:.92}
+.brand{color:var(--logo);font-size:26px;line-height:1}
+.billboard svg{display:none}
+.billboard b{color:var(--logo);font-size:clamp(46px,5.4vw,74px);line-height:.92}
+.bigsign .display{color:var(--logo);text-shadow:0 0 30px rgba(255,46,63,.5);animation:none;font-size:clamp(70px,20vw,320px)}
 
 </style>
 </head>
@@ -765,11 +774,12 @@ main{position:relative;z-index:2}
   rain.frustumCulled=false;rain.renderOrder=3;scene.add(rain);
 
   /* ---------- enseignes néon ---------- */
+  function FNT(o,px){return o.an?'400 '+px+'px Anton,Impact,"Arial Narrow",sans-serif':'900 expanded '+px+'px Archivo,"Arial Black",Impact,sans-serif'}
   function neonTex(text,o){
     var cw=o.w||1024,ch=o.h||256,c=document.createElement('canvas');c.width=cw;c.height=ch;var x=c.getContext('2d');
     var fs=o.fs||ch*.62;x.textAlign='center';x.textBaseline='middle';
     x.font='900 expanded '+fs+'px Archivo,"Arial Black",Impact,sans-serif';
-    var tw=x.measureText(text).width;if(tw>cw*.9){fs*=cw*.9/tw;x.font='900 expanded '+fs+'px Archivo,"Arial Black",Impact,sans-serif'}
+    var tw=x.measureText(text).width;if(tw>cw*.9){fs*=cw*.9/tw;x.font=FNT(o,fs)}
     x.lineJoin='round';
     if(o.box){x.fillStyle='#04060a';x.fillRect(0,0,cw,ch);x.strokeStyle=o.glow;x.lineWidth=10;x.strokeRect(14,14,cw-28,ch-28)}
     function paint(tx,px,py){
@@ -800,7 +810,7 @@ main{position:relative;z-index:2}
     // cinéma : catalogue
     sign('CATALOGUE',Object.assign({box:true,w:1024,h:300,fs:170},WHT),12.6,14,-372,26,7.6,-Math.PI/2+.5,2.0);
     // la grande enseigne finale
-    fin=sign('SINBURY',Object.assign({w:2048,h:512,fs:340},RED),0,58,-540,92,23,0,2.6);
+    fin=sign('SINBURY',Object.assign({w:2048,h:512,fs:420,an:1},RED),0,58,-540,92,23,0,2.6);
     // enseignes de quartier
     var words=['HÔTEL','CAFÉ','BAR','CINÉMA','TABAC','24/24','DISQUES','PHARMACIE','LIBRAIRIE','THÉÂTRE','JAZZ','VIDÉO'];
     var pals=[RED,WHT,BLU,RED,WHT];
@@ -873,7 +883,7 @@ main{position:relative;z-index:2}
     if(slow>40&&DPR>1){DPR=1;resize();slow=0}
   }
   var go=function(){try{buildSigns()}catch(e){}requestAnimationFrame(frame)};
-  if(document.fonts&&document.fonts.load){document.fonts.load('900 100px Archivo').then(go,go)}else go();
+  if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load('900 100px Archivo'),document.fonts.load('400 100px Anton')]).then(go,go)}else go();
   window.SB_GL=true;
 })();
 </script>
@@ -891,7 +901,7 @@ main{position:relative;z-index:2}
   function fit(){
     t.style.fontSize='100px';
     var w=t.getBoundingClientRect().width,a=tb.clientWidth;
-    if(w>0&&a>0)t.style.fontSize=(Math.floor(Math.min(100*a/w,window.innerHeight*.19)*10)/10)+'px';
+    if(w>0&&a>0)t.style.fontSize=(Math.floor(Math.min(100*a/w,window.innerHeight*.24)*10)/10)+'px';
   }
   fit();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
