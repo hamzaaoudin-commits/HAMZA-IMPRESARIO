@@ -352,26 +352,25 @@ html.intro .hero .wrap>*,html.intro .hero .lt{animation-play-state:paused!import
 #intro.zoom{background:rgba(0,0,0,0)}
 #intro.zoom .in-stage{animation:inZoom 1.25s cubic-bezier(.7,0,.9,.4) forwards}
 #intro.out{visibility:hidden;pointer-events:none}
-.in-line{position:absolute;left:0;right:0;top:46%;height:2px;background:#C1121F;transform:scaleX(0);animation:inLine 1.2s .25s cubic-bezier(.7,0,.2,1) forwards}
-.in-logo{display:flex;font-family:'Anton',Impact,'Arial Narrow',sans-serif;color:var(--logo);text-transform:uppercase;font-size:clamp(84px,24vw,380px);line-height:.92;letter-spacing:.004em}
-.in-logo i{font-style:normal;display:block;opacity:0;transform:translateY(60%) scaleY(1.6);transform-origin:50% 100%;animation:inLet .8s cubic-bezier(.16,.9,.2,1) forwards}
-.in-logo i:nth-child(1){animation-delay:1.0s}.in-logo i:nth-child(2){animation-delay:1.08s}.in-logo i:nth-child(3){animation-delay:1.16s}.in-logo i:nth-child(4){animation-delay:1.24s}.in-logo i:nth-child(5){animation-delay:1.32s}.in-logo i:nth-child(6){animation-delay:1.4s}.in-logo i:nth-child(7){animation-delay:1.48s}
-.in-sub{font-family:var(--f-display);font-weight:700;font-stretch:125%;text-transform:uppercase;color:var(--ink);font-size:clamp(12px,1.9vw,26px);letter-spacing:.2em;opacity:0;animation:inSub 1.5s 2.1s ease forwards}
+.in-lw{position:relative;display:grid;justify-items:center}
+.in-lw::before{content:"";position:absolute;left:calc(50% - 50vw);width:100vw;top:calc(50% - 1px);height:2px;background:#ee1c2c;transform:scaleX(0);animation:inLine 1.9s .2s cubic-bezier(.7,0,.2,1) forwards;z-index:2}
+.in-logo{display:flex;font-family:'Anton',Impact,'Arial Narrow',sans-serif;color:var(--logo);text-transform:uppercase;font-size:clamp(84px,24vw,380px);line-height:.92;letter-spacing:.004em;clip-path:inset(50% 0 50% 0);animation:inOpen 1.2s 1s cubic-bezier(.76,0,.16,1) forwards}
+.in-logo i{font-style:normal;display:block}
+.in-sub{font-family:var(--f-display);font-weight:700;font-stretch:125%;text-transform:uppercase;color:var(--ink);font-size:clamp(12px,1.9vw,26px);letter-spacing:.2em;opacity:0;animation:inSub 1.5s 2.3s ease forwards}
 .in-skip{position:absolute;right:clamp(16px,3vw,48px);bottom:clamp(16px,3vw,40px);background:none;border:0;color:var(--mute);cursor:pointer;padding:8px}
 .in-skip:hover{color:var(--ink)}
-@keyframes inLine{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
-@keyframes inLet{from{opacity:0;transform:translateY(60%) scaleY(1.6)}to{opacity:1;transform:none}}
+@keyframes inLine{0%{transform:scaleX(0)}45%{transform:scaleX(1);opacity:1}70%{opacity:1}100%{transform:scaleX(1);opacity:0}}
+@keyframes inOpen{from{clip-path:inset(50% 0 50% 0);letter-spacing:.16em;transform:scale(1.08)}to{clip-path:inset(0 0 0 0);letter-spacing:.004em;transform:none}}
 @keyframes inSub{from{opacity:0;letter-spacing:.5em}to{opacity:1;letter-spacing:.34em}}
 @keyframes inZoom{0%{transform:scale(1);opacity:1}70%{opacity:1}100%{transform:scale(34);opacity:0}}
-@media(prefers-reduced-motion:reduce){.in-line{display:none}.in-logo i{opacity:1;transform:none;animation:none}.in-sub{opacity:1;animation:none}#intro.zoom .in-stage{animation:none;opacity:0;transition:opacity .6s}}
+@media(prefers-reduced-motion:reduce){.in-lw::before{display:none}.in-logo{clip-path:none;animation:none}.in-sub{opacity:1;animation:none}#intro.zoom .in-stage{animation:none;opacity:0;transition:opacity .6s}}
 
 </style>
 
 
 <div id="intro" role="presentation">
-  <div class="in-line"></div>
   <div class="in-stage">
-    <div class="in-logo" aria-label="Sinbury"><i>S</i><i>I</i><i>N</i><i>B</i><i>U</i><i>R</i><i>Y</i></div>
+    <div class="in-lw"><div class="in-logo" aria-label="Sinbury"><i>S</i><i>I</i><i>N</i><i>B</i><i>U</i><i>R</i><i>Y</i></div></div>
     <div class="in-sub">Burn don't fade</div>
   </div>
   <button type="button" class="in-skip label" id="in-skip">Passer</button>
@@ -422,7 +421,6 @@ html.intro .hero .wrap>*,html.intro .hero .lt{animation-play-state:paused!import
     <div class="wrap">
       <p class="label presents">Maison artistique</p>
       <div id="tbox"><h1 class="display" id="t">Sinbury</h1></div>
-      <p class="neon">Burn don't fade</p>
       <p class="promise">Votre talent mérite <em>d'être vu</em>.</p>
       <p class="role label"><b>Impresario</b> · Directeur artistique <span>&amp;</span> architecte de talents</p>
       <p class="bio">Nous repérons des personnes à fort potentiel, dans tous les domaines, et nous les accompagnons : direction artistique, stratégie de carrière, relations professionnelles et réalisation de leurs projets.</p>
