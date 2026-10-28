@@ -365,6 +365,26 @@ html.intro .hero .wrap>*,html.intro .hero .lt{animation-play-state:paused!import
 @keyframes inZoom{0%{transform:scale(1);opacity:1}70%{opacity:1}100%{transform:scale(34);opacity:0}}
 @media(prefers-reduced-motion:reduce){.in-lw::before{display:none}.in-logo{clip-path:none;animation:none}.in-sub{opacity:1;animation:none}#intro.zoom .in-stage{animation:none;opacity:0;transition:opacity .6s}}
 
+/* catalogue par formats */
+.fmt-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:clamp(18px,2.4vw,30px)}
+.fmt-tabs button{background:none;border:1px solid var(--line);color:var(--soft);padding:10px 16px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.fmt-tabs button:hover{color:var(--ink);border-color:var(--mute)}
+.fmt-tabs button.on{background:var(--logo);border-color:var(--logo);color:#fff}
+@media(max-width:700px){.fmt-tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--gut,16px)*-1);padding-inline:var(--gut,16px);scrollbar-width:none}.fmt-tabs button{white-space:nowrap;flex:none}}
+.fmt[hidden]{display:none}
+.fmt{margin-top:clamp(30px,5vw,70px)}
+.fmt-h{display:flex;align-items:baseline;gap:clamp(14px,2vw,28px);flex-wrap:wrap;padding:0 0 clamp(14px,2vw,24px)}
+.fmt-n{color:var(--mute)}.fmt-n b{color:var(--logo)}
+.fmt-t{margin:0;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(34px,5vw,72px);line-height:1;color:var(--ink)}
+.fmt-c{color:var(--mute);margin-left:auto}
+.fmt .work:first-of-type{border-top:1px solid var(--logo)}
+.fmt-tabs{width:100%;justify-self:start;align-self:start;justify-content:flex-start}
+.fmt-tabs button{font-family:var(--f-mono,'IBM Plex Mono',monospace);font-size:11px;letter-spacing:.16em;text-transform:uppercase;line-height:1}
+.fmt-h{align-items:flex-end}
+.fmt-n{padding-bottom:.6em}.fmt-c{padding-bottom:.6em}
+#laboratoire .card.rv{opacity:1!important;transform:none!important}
+.fmt-tabs button{font-weight:500;font-stretch:100%}
+
 </style>
 
 
@@ -759,13 +779,33 @@ html.intro .hero .wrap>*,html.intro .hero .lt{animation-play-state:paused!import
   $('#cat-cover').addEventListener('click',function(){showCat(ci+1)});
   // Catalogue façon A24 : une œuvre par écran
   var works=document.createElement('div');works.className='works';
-  order.forEach(function(id,i){
-    var cv=document.querySelector('.cvi[data-p="'+id+'"]'),pn=document.getElementById(id);
-    var w=document.createElement('article');w.className='work rv';
-    w.innerHTML='<div class="w-cv">'+cv.innerHTML+'</div><div class="w-tx"><span class="w-n label"><b>'+pad(i+1)+'</b> / '+pad(order.length)+'</span><span class="kind label">'+pn.querySelector('.kind').innerHTML+'</span><h3 class="w-t">'+pn.querySelector('h3').innerHTML+'</h3>'+pn.querySelector('p').outerHTML+pn.querySelector('.facts').outerHTML+'</div>';
-    works.appendChild(w);
-    if('IntersectionObserver' in window)io.observe(w);else w.classList.add('in');
+  var GR=[['Univers',['p1']],['Musique',['p2']],['Cinéma',['p9']],['Publications',['p3','p4','p7']],['Expositions & médias',['p5','p6']],['Studio & parcours',['p8','p10']]];
+  var fbar=document.createElement('div');fbar.className='fmt-tabs';fbar.setAttribute('role','tablist');
+  function tab(lbl,key,on){var t=document.createElement('button');t.type='button';t.className='label'+(on?' on':'');t.textContent=lbl;t.setAttribute('data-f',key);fbar.appendChild(t)}
+  tab('Tout','all',true);
+  GR.forEach(function(g,gi){
+    tab(g[0],String(gi));
+    var sec=document.createElement('section');sec.className='fmt';sec.setAttribute('data-g',gi);
+    var h=document.createElement('header');h.className='fmt-h';
+    h.innerHTML='<span class="label fmt-n"><b>'+pad(gi+1)+'</b> / '+pad(GR.length)+'</span><h3 class="fmt-t">'+g[0]+'</h3><span class="label fmt-c">'+pad(g[1].length)+(g[1].length>1?' œuvres':' œuvre')+'</span>';
+    sec.appendChild(h);
+    g[1].forEach(function(id){
+      var i=order.indexOf(id);
+      var cv=document.querySelector('.cvi[data-p="'+id+'"]'),pn=document.getElementById(id);
+      var w=document.createElement('article');w.className='work rv';
+      w.innerHTML='<div class="w-cv">'+cv.innerHTML+'</div><div class="w-tx"><span class="w-n label"><b>'+pad(i+1)+'</b> / '+pad(order.length)+'</span><span class="kind label">'+pn.querySelector('.kind').innerHTML+'</span><h3 class="w-t">'+pn.querySelector('h3').innerHTML+'</h3>'+pn.querySelector('p').outerHTML+pn.querySelector('.facts').outerHTML+'</div>';
+      sec.appendChild(w);
+      if('IntersectionObserver' in window)io.observe(w);else w.classList.add('in');
+    });
+    works.appendChild(sec);
   });
+  fbar.addEventListener('click',function(e){
+    var t=e.target.closest('button');if(!t)return;var f=t.getAttribute('data-f');
+    Array.prototype.forEach.call(fbar.children,function(b){b.classList.toggle('on',b===t)});
+    Array.prototype.forEach.call(works.children,function(s){s.hidden=!(f==='all'||s.getAttribute('data-g')===f)});
+    var r=fbar.getBoundingClientRect();if(r.top<0||r.top>innerHeight*.5)window.scrollTo({top:scrollY+r.top-80,behavior:'smooth'});
+  });
+  cat.parentNode.insertBefore(fbar,cat);
   cat.parentNode.insertBefore(works,cat);
   var tx=0;
   cat.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
