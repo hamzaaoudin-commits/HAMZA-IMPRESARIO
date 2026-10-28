@@ -347,37 +347,47 @@ html,body{background:#000!important}
 /* introduction */
 html.intro,html.intro body{overflow:hidden!important}
 html.intro .hero .wrap>*,html.intro .hero .lt{animation-play-state:paused!important}
-#intro{position:fixed;inset:0;z-index:500;background:#000;display:grid;place-content:center;justify-items:center;gap:clamp(14px,2.4vw,30px);transition:opacity .9s ease,visibility .9s;cursor:pointer}
-#intro.out{opacity:0;visibility:hidden;pointer-events:none}
-.in-logo{font-family:'Anton',Impact,'Arial Narrow',sans-serif;color:var(--logo);text-transform:uppercase;font-size:clamp(84px,24vw,380px);line-height:.92;letter-spacing:.004em;clip-path:inset(0 0 100% 0);animation:inLogo 1.1s .5s cubic-bezier(.2,.7,.2,1) forwards}
-.in-sub{font-family:var(--f-display);font-weight:700;font-stretch:125%;text-transform:uppercase;color:var(--ink);font-size:clamp(12px,1.9vw,26px);letter-spacing:.2em;opacity:0;animation:inSub 1.6s 1.7s ease forwards}
+#intro{position:fixed;inset:0;z-index:500;background:#000;overflow:hidden;cursor:pointer;transition:background .9s ease .25s}
+#intro .in-stage{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:clamp(14px,2.4vw,30px);transform-origin:50% 46%}
+#intro.zoom{background:rgba(0,0,0,0)}
+#intro.zoom .in-stage{animation:inZoom 1.25s cubic-bezier(.7,0,.9,.4) forwards}
+#intro.out{visibility:hidden;pointer-events:none}
+.in-line{position:absolute;left:0;right:0;top:46%;height:2px;background:#C1121F;transform:scaleX(0);animation:inLine 1.2s .25s cubic-bezier(.7,0,.2,1) forwards}
+.in-logo{display:flex;font-family:'Anton',Impact,'Arial Narrow',sans-serif;color:var(--logo);text-transform:uppercase;font-size:clamp(84px,24vw,380px);line-height:.92;letter-spacing:.004em}
+.in-logo i{font-style:normal;display:block;opacity:0;transform:translateY(60%) scaleY(1.6);transform-origin:50% 100%;animation:inLet .8s cubic-bezier(.16,.9,.2,1) forwards}
+.in-logo i:nth-child(1){animation-delay:1.0s}.in-logo i:nth-child(2){animation-delay:1.08s}.in-logo i:nth-child(3){animation-delay:1.16s}.in-logo i:nth-child(4){animation-delay:1.24s}.in-logo i:nth-child(5){animation-delay:1.32s}.in-logo i:nth-child(6){animation-delay:1.4s}.in-logo i:nth-child(7){animation-delay:1.48s}
+.in-sub{font-family:var(--f-display);font-weight:700;font-stretch:125%;text-transform:uppercase;color:var(--ink);font-size:clamp(12px,1.9vw,26px);letter-spacing:.2em;opacity:0;animation:inSub 1.5s 2.1s ease forwards}
 .in-skip{position:absolute;right:clamp(16px,3vw,48px);bottom:clamp(16px,3vw,40px);background:none;border:0;color:var(--mute);cursor:pointer;padding:8px}
 .in-skip:hover{color:var(--ink)}
-@keyframes inLogo{from{clip-path:inset(0 0 100% 0);transform:translateY(24px)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes inLine{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+@keyframes inLet{from{opacity:0;transform:translateY(60%) scaleY(1.6)}to{opacity:1;transform:none}}
 @keyframes inSub{from{opacity:0;letter-spacing:.5em}to{opacity:1;letter-spacing:.34em}}
-@media(prefers-reduced-motion:reduce){.in-logo{clip-path:none;animation:none}.in-sub{opacity:1;animation:none}}
+@keyframes inZoom{0%{transform:scale(1);opacity:1}70%{opacity:1}100%{transform:scale(34);opacity:0}}
+@media(prefers-reduced-motion:reduce){.in-line{display:none}.in-logo i{opacity:1;transform:none;animation:none}.in-sub{opacity:1;animation:none}#intro.zoom .in-stage{animation:none;opacity:0;transition:opacity .6s}}
 
 </style>
 
 
 <div id="intro" role="presentation">
-  <div class="in-logo">Sinbury</div>
-  <div class="in-sub">Burn don't fade</div>
+  <div class="in-line"></div>
+  <div class="in-stage">
+    <div class="in-logo" aria-label="Sinbury"><i>S</i><i>I</i><i>N</i><i>B</i><i>U</i><i>R</i><i>Y</i></div>
+    <div class="in-sub">Burn don't fade</div>
+  </div>
   <button type="button" class="in-skip label" id="in-skip">Passer</button>
 </div>
 <script>
 (function(){
-  var d=document.documentElement,el=document.getElementById('intro'),done=false;
+  var d=document.documentElement,el=document.getElementById('intro'),started=false,gone=false;
   d.classList.add('intro');window.scrollTo(0,0);
-  function end(){if(done)return;done=true;d.classList.remove('intro');el.classList.add('out');setTimeout(function(){el.parentNode&&el.parentNode.removeChild(el)},1000)}
   var red=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  setTimeout(end,red?900:3800);
-  document.getElementById('in-skip').addEventListener('click',end);
-  el.addEventListener('click',end);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter'||e.key===' ')end()});
+  function zoom(){if(started)return;started=true;d.classList.remove('intro');el.classList.add('zoom');setTimeout(rm,red?700:1500)}
+  function rm(){if(gone)return;gone=true;el.parentNode&&el.parentNode.removeChild(el)}
+  setTimeout(zoom,red?900:3900);
+  el.addEventListener('click',zoom);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter'||e.key===' ')zoom()});
 })();
 </script>
-
 </head>
 <body>
 <header class="hud-t">
