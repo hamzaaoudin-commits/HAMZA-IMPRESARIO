@@ -483,6 +483,24 @@ html.wd-open,html.wd-open body{overflow:hidden!important}
 .fm,.all{padding:clamp(22px,3vw,40px) 0}
 .pc-t{font-size:clamp(14px,1.2vw,17px)}
 
+/* v3 : fidèle à la page Films d'A24 (titres sobres, colonnes à filets, légende, bouton qui se remplit) */
+.fm-t{font-family:var(--f-display);font-weight:400;font-stretch:100%;text-transform:none;letter-spacing:-.035em;font-size:clamp(40px,5.4vw,84px);line-height:.98}
+.fm-row{gap:0}
+.pc{width:clamp(170px,17vw,250px);border-left:1px solid var(--line);padding:0 clamp(14px,1.6vw,24px);gap:10px}
+.pc:first-child{border-left:0;padding-left:0}
+.pc-cv{background:none}
+.pc:hover .pc-cv{transform:none}
+.pc-st{color:var(--mute);margin-top:10px;font-size:11px}
+.pc-t{font-family:var(--f-display);font-weight:500;font-stretch:100%;font-size:clamp(17px,1.5vw,22px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);transition:opacity .3s}
+.pc:hover .pc-t{opacity:.5}
+.pc-b{justify-self:start;border:1px solid var(--ink);color:var(--ink);padding:9px 14px;font-size:11px;margin-top:4px;transition:background .25s,color .25s}
+.pc:hover .pc-b{background:var(--ink);color:#000}
+.ar-t{font-weight:500;font-stretch:100%;letter-spacing:-.01em}
+.ag{padding:28px 0 12px;color:var(--logo);border-top:1px solid var(--line);list-style:none}
+.al .ag+.ar{border-top:0}
+.al>.ag:first-child{border-top:0;padding-top:0}
+.all .fm-t{font-size:clamp(40px,5.4vw,84px)}
+
 </style>
 
 
@@ -889,7 +907,7 @@ html.wd-open,html.wd-open body{overflow:hidden!important}
   GR.forEach(function(g,gi){
     h+='<section class="fm"><header class="fm-h"><span class="label fm-n"><b>'+pad(gi+1)+'</b> / '+pad(GR.length)+'</span><h3 class="fm-t">'+g[0]+'</h3><span class="label fm-c">'+pad(g[1].length)+(g[1].length>1?' œuvres':' œuvre')+'</span></header><div class="fm-row">';
     g[1].forEach(function(id){var it=byId(id);
-      h+='<div class="pc" role="button" tabindex="0" data-id="'+id+'"><div class="pc-cv">'+it.svg+'</div>'+(it.st?'<span class="pc-st label">'+it.st+'</span>':'')+'<h4 class="pc-t">'+it.ttl+'</h4><span class="pc-k">'+it.fmt+'</span></div>';
+      h+='<div class="pc" role="button" tabindex="0" data-id="'+id+'"><div class="pc-cv">'+it.svg+'</div>'+(it.st?'<span class="pc-st label">'+it.st+'</span>':'')+'<h4 class="pc-t">'+it.ttl+'</h4><span class="pc-b label">Voir la fiche</span></div>';
     });
     h+='</div></section>';
   });
@@ -899,7 +917,7 @@ html.wd-open,html.wd-open body{overflow:hidden!important}
     var l=items.slice();
     if(az)l.sort(function(a,b){return a.ttl.localeCompare(b.ttl,'fr')});
     else l.sort(function(a,b){return a.gi-b.gi||a.i-b.i});
-    $('#al',cw).innerHTML=l.map(function(it,n){return '<li class="ar" role="button" tabindex="0" data-id="'+it.id+'"><span class="ar-n label">'+pad(n+1)+'</span><span class="ar-t">'+it.ttl+'</span><span class="ar-f label">'+it.fmt+'</span><span class="ar-s label">'+it.st+'</span><span class="ar-a" aria-hidden="true">↗</span></li>'}).join('');
+    var lg=-1;$('#al',cw).innerHTML=l.map(function(it,n){var gh='';if(!az&&it.gi!==lg){lg=it.gi;gh='<li class="ag label">'+GR[it.gi][0]+'</li>'}return gh+ '<li class="ar" role="button" tabindex="0" data-id="'+it.id+'"><span class="ar-n label">'+pad(n+1)+'</span><span class="ar-t">'+it.ttl+'</span><span class="ar-f label">'+it.fmt+'</span><span class="ar-s label">'+it.st+'</span><span class="ar-a" aria-hidden="true">↗</span></li>'}).join('');
   }
   rows(false);
   var az=false;
